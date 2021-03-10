@@ -3,7 +3,7 @@
  * enumerations, and error classes.
  */
 process.emitWarning(
-    'Importing @shipengine/connect as dependency in your app is no longer supported, ' +
+    'Importing @shipengine/connect as a dependency in your app is no longer supported, ' +
     'please install the latest version of @shipengine/connect-sdk instead.',
     'DeprecationWarning'
 );
