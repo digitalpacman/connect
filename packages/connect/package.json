@@ -29,6 +29,10 @@
   "bin": {
     "connect": "bin/connect.js"
   },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=10.5.0"
+  },
   "files": [
     "bin",
     "lib"
@@ -47,9 +51,6 @@
     "test:typescript": "tsc --noEmit test/specs/typescript.spec.ts",
     "watch": "tsc --watch"
   },
-  "engines": {
-    "node": ">=10"
-  },
   "oclif": {
     "commands": "./lib/commands",
     "bin": "connect",
@@ -63,7 +64,6 @@
       }
     }
   },
-  "engineStrict": true,
   "devDependencies": {
     "@jsdevtools/chai-exec": "^2.1.1",
     "chai": "^4.2.0",
