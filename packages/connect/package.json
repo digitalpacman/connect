@@ -34,8 +34,9 @@
     "node": ">=10.5.0"
   },
   "files": [
-    "bin",
-    "lib"
+    "/bin",
+    "/lib",
+    "/templates"
   ],
   "scripts": {
     "build": "tsc --build",
