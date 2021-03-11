@@ -8,10 +8,15 @@ class InfraNew extends Generator {
 
     // Prompted fields used for templating
     appName!: string;
+
     type!: string;
+
     organization!: string;
+
     image!: string;
+
     repo!: string;
+
     hasBuild!: boolean;
 
     constructor(args: any, opts: any) {
