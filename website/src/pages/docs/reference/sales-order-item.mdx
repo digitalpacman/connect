@@ -100,6 +100,38 @@ not passed as an argument to any method.
     </Description>
   </Field>
 
+  <Field name="product.dimensions" type="object" required={false}>
+     <Description>
+       The dimensions for the product.
+     </Description>
+  </Field>
+
+  <Field name="product.dimensions.length" type="number" required={false}>
+    <Description>
+      The length of the product. This value may contain decimals.
+    </Description>
+  </Field>
+
+  <Field name="product.dimensions.width" type="number" required={false}>
+    <Description>
+      The width of the product. This value may contain decimals.
+    </Description>
+  </Field>
+
+  <Field name="product.dimensions.height" type="number" required={false}>
+    <Description>
+      The height of the product. This value may contain decimals.
+    </Description>
+  </Field>
+
+  <Field name="product.dimensions.unit" type="string" required={true}>
+    <Description>
+      The unit of measurement for the dimensions. Valid values include the following:
+      * `in` - inches
+      * `cm` - centimeters
+    </Description>
+  </Field>
+
   <Field name="quantity" type="object" required={true}>
     <Description>
       The quantity of this item in the sales order.
