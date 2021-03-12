@@ -11,11 +11,10 @@ import {
   NoteType,
   DocumentType,
   DocumentFormat,
-  LengthUnit
+  LengthUnit,
 } from "@shipengine/connect-sdk";
 
 export function mapItem(item: Output.SalesOrderItem): api.SalesOrderItem {
-
   const mappedItem: api.SalesOrderItem = {
     line_item_id: item.id,
     description: item.description,
@@ -44,8 +43,11 @@ export function mapItem(item: Output.SalesOrderItem): api.SalesOrderItem {
       length: item.product.dimensions.length,
       width: item.product.dimensions.width,
       height: item.product.dimensions.height,
-      unit: item.product.dimensions.unit === LengthUnit.Inches ? api.DimensionsUnit.Inch : api.DimensionsUnit.Centimeter
-    }
+      unit:
+        item.product.dimensions.unit === LengthUnit.Inches
+          ? api.DimensionsUnit.Inch
+          : api.DimensionsUnit.Centimeter,
+    };
   }
 
   return mappedItem;
