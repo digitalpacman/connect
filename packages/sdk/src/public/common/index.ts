@@ -1,7 +1,9 @@
 export * from "./addresses/address";
 export * from "./addresses/address-with-contact-info";
+export * from "./addresses/address-with-contact-info-and-pickup-location";
 export * from "./addresses/contact-info";
 export * from "./addresses/person-name";
+export * from "./addresses/pickup-location";
 export * from "./app";
 export * from "./charge";
 export * from "./connection-app";
@@ -28,3 +30,4 @@ export * from "./oauth/token-properties";
 export * from "./oauth-config";
 export * from "./transaction";
 export * from "./types";
+export * from "./document";

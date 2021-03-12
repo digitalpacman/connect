@@ -9,7 +9,7 @@ export { ShipmentCancellationOutcome } from "./carriers/shipments/shipment-cance
 export { ShipmentConfirmation } from "./carriers/shipments/shipment-confirmation";
 export { TrackingInfo } from "./carriers/tracking/tracking-info";
 export { Label } from "./carriers/documents/label";
-export { Document } from "./carriers/documents/document";
+export { Document } from "./common/document";
 export {
   DateTimeZone,
   Charge
@@ -41,3 +41,5 @@ export { RequestedFulfillment } from "./orders/requested-fulfillment";
 export { RequestedFulfillmentExtensions } from "./orders/requested-fulfillment-extensions";
 export { PersonName } from "./common/addresses/person-name"
 export { AcknowledgedSalesOrder } from "./orders/acknowledged-sales-order";
+export { AddressWithContactInfoAndPickupLocation } from "./common/addresses/address-with-contact-info-and-pickup-location";
+export { PickupLocation } from "./common/addresses/pickup-location";
