@@ -1,39 +1,35 @@
+import nodemon from 'nodemon';
 import BaseCommand from "../base-command";
-import { ApiClientErrors } from '../core/api-client'
 import { loadApp } from "@shipengine/connect-loader";
-import { spawn } from 'child_process';
-import { promisify } from 'util';
 
 export default class Start extends BaseCommand {
   public static description = "Start the app";
 
   async run(): Promise<void> {
-    const { flags } = this.parse(Start);
-
     try {
       const app = await loadApp(process.cwd())
-      let runtime;
+      let script;
       if (app.type === 'order') {
-        runtime = require.resolve('@shipengine/connect-order-source-runtime')
+        script = require.resolve('@shipengine/connect-order-source-runtime')
       } else {
-        runtime = require.resolve('@shipengine/connect-shipping-runtime')
+        script = require.resolve('@shipengine/connect-shipping-runtime')
       }
-      spawn('node', [runtime], {
-        cwd: process.cwd(),
-        stdio: 'inherit',
+      nodemon({
+        script,
         env: {
-          ...process.env,
           DX_APP_PATH: process.cwd()
-        }
+        },
+        ext: "js,json,ts,yaml,yml",
+        watch: [
+          'src/'
+        ],
+      }).on('restart', files => {
+        console.log(`nodemon: restarting due to ${files.join(', ')}`)
       });
     } catch (error) {
       switch (error.code) {
         case "ERR_APP_ERROR":
           return this.error("Error loading your app - please make sure you are in an app directory", {
-            exit: 1,
-          });
-        case ApiClientErrors.NotFound:
-          return this.error("This app has not been published yet", {
             exit: 1,
           });
         default:
