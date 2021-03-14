@@ -24,7 +24,10 @@ export default class Start extends BaseCommand {
           'src/'
         ],
       }).on('restart', files => {
-        console.log(`nodemon: restarting due to ${files.join(', ')}`)
+        if (files) {
+          console.log(`connect: restarting due to ${files.join(', ')}`);
+        }
+        console.log('connect: restarting');
       });
     } catch (error) {
       switch (error.code) {
