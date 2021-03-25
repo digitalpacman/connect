@@ -288,6 +288,21 @@ export function mapSalesOrderStatus(status: Output.SalesOrderStatus): api.SalesO
   }
 }
 
+export function getSingleCurrency(order: Output.SalesOrder): string {
+  let currency: string | undefined = undefined;
+
+  // We're going to check the line item currencies first because they're the most likely to exist
+  order.requestedFulfillments.forEach((fill) => {
+    fill.items.forEach((item) => {
+      currency ||= item.unitPrice.currency
+    });
+  });
+
+  // If we didn't pick up a currency from the line items, use the currency on totalCharges
+  // We don't need to provide a fallback, because totalCharges.currency already defaults to USD
+  return currency || order.totalCharges.currency
+}
+
 export function mapSalesOrder(order: Output.SalesOrder): api.SalesOrder {
   logger.debug("Mapping order", order);
 
@@ -298,7 +313,7 @@ export function mapSalesOrder(order: Output.SalesOrder): api.SalesOrder {
     requested_fulfillments: order.requestedFulfillments.map(mapRequestedFulfillment),
     buyer: mapBuyer(order.buyer),
     bill_to: mapBillTo(order.buyer),
-    currency: order.totalCharges.currency,
+    currency: getSingleCurrency(order),
     payment: mapPayment(order),
     order_url: order.orderURL?.toString(),
     notes: order.notes.map(mapNote),
