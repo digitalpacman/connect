@@ -1,2 +1,3 @@
 releases:
+  "@shipengine/connect": patch
   "@shipengine/connect-order-source-runtime": patch
