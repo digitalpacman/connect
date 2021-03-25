@@ -289,18 +289,18 @@ export function mapSalesOrderStatus(status: Output.SalesOrderStatus): api.SalesO
 }
 
 export function getSingleCurrency(order: Output.SalesOrder): string {
-  let currency: string | undefined = undefined;
-
   // We're going to check the line item currencies first because they're the most likely to exist
-  order.requestedFulfillments.forEach((fill) => {
-    fill.items.forEach((item) => {
-      currency ||= item.unitPrice.currency
-    });
-  });
+  for (const fill of order.requestedFulfillments) {
+    for (const item of fill.items) {
+      if (item.unitPrice.currency) {
+        return item.unitPrice.currency;
+      }
+    }
+  }
 
   // If we didn't pick up a currency from the line items, use the currency on totalCharges
   // We don't need to provide a fallback, because totalCharges.currency already defaults to USD
-  return currency || order.totalCharges.currency
+  return order.totalCharges.currency;
 }
 
 export function mapSalesOrder(order: Output.SalesOrder): api.SalesOrder {
