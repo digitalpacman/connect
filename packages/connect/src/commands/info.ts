@@ -50,10 +50,11 @@ export default class Info extends BaseCommand {
       const pathToApp = process.cwd();
       const app = await loadApp(pathToApp);
       const supportedCountries = getSupportedCountries(app);
-
+      console.log('supportedCountries', supportedCountries);
       const apiClient = await this.apiClient(flags.debug)
 
       const platformApp = await apiClient.apps.getByName(app.manifest.name);
+      console.log(platformApp);
       const paginatedDeployments = await apiClient.deployments.getAllForAppId(
         platformApp.id,
       );

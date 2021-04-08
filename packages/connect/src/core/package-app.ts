@@ -5,6 +5,7 @@ import { exec } from "child_process";
 import cli from "cli-ux";
 import logSymbols from "log-symbols";
 import { PackageJSON } from './types/package-json';
+import { loadApp } from "@shipengine/connect-loader";
 
 const asyncExec = util.promisify(exec);
 
@@ -14,6 +15,7 @@ const asyncExec = util.promisify(exec);
  */
 export async function packageApp(cwd?: string): Promise<string> {
   const currentDir = cwd ? cwd : process.cwd();
+  const app = await loadApp(currentDir);
 
   const packagePath = path.join(currentDir, "package.json");
 
@@ -42,6 +44,7 @@ export async function packageApp(cwd?: string): Promise<string> {
   let stdout;
 
   try {
+    
     const results = await asyncExec("npm pack", { cwd: currentDir });
     stdout = results.stdout;
 

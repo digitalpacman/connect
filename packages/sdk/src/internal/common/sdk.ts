@@ -13,6 +13,10 @@ export const sdk = manifest as AppManifestPOJO;
  */
 export interface AppManifestPOJO {
   name: string;
+  connect?: {
+    appType: string;
+    sellerCountries: string[];
+  };
   version: string;
   description?: string;
   dependencies?: Record<string, string>;
