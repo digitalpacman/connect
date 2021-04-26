@@ -1,4 +1,3 @@
-import { Request } from "express";
 export enum Method {
   POST = "post",
   GET = "get",
@@ -10,5 +9,5 @@ export enum Method {
 export interface Route {
   path: string;
   method: Method;
-  handler?: (req: Request) => any | Promise<any>;
+  handler?: (req: any) => any | Promise<any>;
 }
