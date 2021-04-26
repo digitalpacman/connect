@@ -17,4 +17,3 @@ export interface CarrierAppMetadata {
   /** @description A list of branded order sources associated with this integration */
   Carriers: CarrierDefinition[];
 }
-

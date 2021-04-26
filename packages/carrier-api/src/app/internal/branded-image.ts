@@ -7,4 +7,3 @@ export interface BrandedImages {
   /** @description The full path to the icon file */
   icon: string;
 }
-

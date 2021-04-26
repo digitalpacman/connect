@@ -7,7 +7,7 @@ import {
   CancelPickupRequest,
   GetRatesRequest,
   TrackingRequest,
-} from '../requests';
+} from "../requests";
 
 import {
   RegisterResponse,
@@ -18,15 +18,16 @@ import {
   CancelPickupResponse,
   GetRatesResponse,
   TrackingResponse,
-} from '../responses';
+} from "../responses";
 
 /**
  * @description This defines a connect carrier app
  */
 export interface CarrierAppDefinition {
+  Metadata?: any;
   /**
    * @description This method is used to register an account
-   * @param request The information needed to register or initialize a connection with the shipping provider 
+   * @param request The information needed to register or initialize a connection with the shipping provider
    */
   Register?: (
     request: RegisterRequest
@@ -81,4 +82,3 @@ export interface CarrierAppDefinition {
     request: TrackingRequest
   ) => TrackingResponse | Promise<TrackingResponse>;
 }
-
