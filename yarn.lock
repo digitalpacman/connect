@@ -1234,6 +1234,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@shipengine/connect-carrier-api@workspace:packages/carrier-api"
   dependencies:
+    express: ^4.17.1
     prettier: 2.0.5
     typescript: ^4.0.5
   languageName: unknown
