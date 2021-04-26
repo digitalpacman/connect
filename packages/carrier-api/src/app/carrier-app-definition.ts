@@ -20,11 +20,13 @@ import {
   TrackingResponse,
 } from "../responses";
 
+import { CarrierAppMetadata } from "./metadata/carrier-app-metadata";
+
 /**
  * @description This defines a connect carrier app
  */
 export interface CarrierAppDefinition {
-  Metadata?: any;
+  Metadata: CarrierAppMetadata;
   /**
    * @description This method is used to register an account
    * @param request The information needed to register or initialize a connection with the shipping provider

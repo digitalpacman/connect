@@ -4,6 +4,8 @@ import { ConnectRuntimeApp, Method, Route, BrandedImages } from "./internal";
 import { resolve } from "path";
 import { readFileSync } from "fs";
 
+import { Metadata } from "./internal/metadata";
+
 const handleRequest = (implementation?: Function): any => {
   if (implementation) {
     return (request: any) => {
@@ -61,7 +63,7 @@ export class CarrierApp implements ConnectRuntimeApp {
   redoc: string;
   constructor(definition: CarrierAppDefinition) {
     registerRoutes(this.routes, definition);
-    this.data = definition.Metadata || {};
+    this.data = new Metadata(definition);
     this.redoc = readFileSync(resolve(__dirname, "../../spec.yaml")).toString();
   }
   getImages(): BrandedImages[] {
